@@ -16,8 +16,8 @@ public class APITest {
 
     public static void main(String[] args) throws Exception {
 
-        String result = queryInvoiceStatus();
-        //String result = recognise();
+//        String result = queryInvoiceStatus();
+        String result = recognise();
         //String result = insertWithArray();
         System.out.println(result);
 
@@ -33,7 +33,7 @@ public class APITest {
     //OCR识别接口
     public static String recognise() throws Exception {
         //构造POST表单Map
-        Map<String, String> paramsMap = BuildParam.buildRecognisePostParam();
+        Map<String, Object> paramsMap = BuildParam.buildRecognisePostParam();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.RECOGNISE.getUrl(),paramsMap);
     }

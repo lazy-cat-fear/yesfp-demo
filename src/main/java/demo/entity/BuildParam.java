@@ -1,11 +1,9 @@
 package demo.entity;
 
 import com.google.gson.GsonBuilder;
+import demo.utils.Base64Util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @program: yesfp-demo
@@ -22,11 +20,13 @@ public class BuildParam {
         return paramsMap;
     }
 
-    public static Map<String, String> buildRecognisePostParam() {
-        Map<String, String> paramsMap = new HashMap<String, String>();
+    public static Map<String, Object> buildRecognisePostParam() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("nsrsbh", "201609140000001");
         paramsMap.put("orgcode", "20160914001");
-        paramsMap.put("file", "I7BTLrJ1qY2tfy5ByM6VCN8+T69E7JqCM84Nsa1nOXhMGY+jM77C");
+        //注意 base64编码不能有换行  选择BASE64Encoder需要将换行处理  用Base64比较好
+        //paramsMap.put("file", Base64Util.imageToBase64("D:\\3.jpg"));
+        paramsMap.put("file", Base64Util.NetImageToBase64("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1590057248&di=a298d5f9728d9ded45906a643d8b8b2d&src=http://5b0988e595225.cdn.sohucs.com/images/20180810/75d14550cff44cf4bcc0346dd50c3aae.jpeg"));//ImageToBase64("D:\\1.png"));
         return paramsMap;
     }
 
@@ -42,6 +42,7 @@ public class BuildParam {
         paramsMap.put("autoAudit", "false");
         return paramsMap;
     }
+
     /**
      * url回掉配置
      */
@@ -127,5 +128,4 @@ public class BuildParam {
     private static String buildFpqqlsh() {
         return "254291i05h2080102sKs";
     }
-
 }
