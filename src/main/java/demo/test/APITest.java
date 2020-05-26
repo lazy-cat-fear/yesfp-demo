@@ -17,8 +17,8 @@ public class APITest {
     public static void main(String[] args) throws Exception {
 
 //        String result = queryInvoiceStatus();
-        String result = recognise();
-        //String result = insertWithArray();
+//        String result = recognise();
+        String result = insertWithArray();
         System.out.println(result);
 
     }

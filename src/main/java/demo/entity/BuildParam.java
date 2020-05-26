@@ -36,8 +36,9 @@ public class BuildParam {
     public static Map<String, String> buildInsertWithArrayPostParam() {
         Map<String, String> paramsMap = new HashMap<String, String>();
         paramsMap.put("requestdatas", buildRequestDatas());
-        paramsMap.put("email", buildEmailConfigs());
-        paramsMap.put("sms", buildSmsConfigs());
+        //可以选填
+        //paramsMap.put("email", buildEmailConfigs());
+        //paramsMap.put("sms", buildSmsConfigs());
         paramsMap.put("url", buildUrlConfigs());
         paramsMap.put("autoAudit", "false");
         return paramsMap;
@@ -126,6 +127,6 @@ public class BuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "254291i05h2080102sKs";
+        return "264291i05h2080102sKs";
     }
 }
