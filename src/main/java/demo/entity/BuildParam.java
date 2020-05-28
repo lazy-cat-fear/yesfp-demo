@@ -22,8 +22,10 @@ public class BuildParam {
 
     public static Map<String, Object> buildRecognisePostParam() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
-        paramsMap.put("nsrsbh", "201609140000001");
-        paramsMap.put("orgcode", "20160914001");
+        //paramsMap.put("nsrsbh", "201609140000001");
+        paramsMap.put("nsrsbh", "91110105MA0084MW37");
+        //paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("orgcode", "91110105MA0084MW37");
         //注意 base64编码不能有换行  选择BASE64Encoder需要将换行处理  用Base64比较好
         //paramsMap.put("file", Base64Util.imageToBase64("D:\\3.jpg"));
         paramsMap.put("file", Base64Util.NetImageToBase64("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1590057248&di=a298d5f9728d9ded45906a643d8b8b2d&src=http://5b0988e595225.cdn.sohucs.com/images/20180810/75d14550cff44cf4bcc0346dd50c3aae.jpeg"));//ImageToBase64("D:\\1.png"));
@@ -91,12 +93,12 @@ public class BuildParam {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("FPQQLSH", buildFpqqlsh());
         //测试环境请一定要使用测试纳税人识别号
-        data.put("XSF_NSRSBH", "201609140000001");
+        data.put("XSF_NSRSBH", "201609140000001");//91110105MA0084MW37
         data.put("GMF_MC", "购买方名称");
         data.put("GMF_DZDH", "购买方地址电话");
         //组织编码，测试环境请一定使用测试环境的组织编码
-        data.put("ORGCODE", "20160914001");
-        data.put("JSHJ", 1396.00);
+        data.put("ORGCODE", "20160914001");//91110105MA0084MW37
+        data.put("JSHJ", 1.00);
         data.put("items", buildItems());
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
@@ -109,7 +111,7 @@ public class BuildParam {
     private static List<Object> buildItems() {
         List<Object> items = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("XMJSHJ", "1396.00");
+        data.put("XMJSHJ", "1.00");
         data.put("XMMC", "住宅物业管理费2");
         //税率16%需要写成0.16的格式
         data.put("SL", 0.16);

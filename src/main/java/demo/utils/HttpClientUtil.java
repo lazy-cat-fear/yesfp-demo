@@ -105,6 +105,7 @@ public class HttpClientUtil {
         try {
             httpClient = createClient(url, getHttpConfig(configList));
             HttpPost httpPost = new HttpPost(url);
+            System.out.println("请求参数："+JSON.toJSONString(params).replace("\\",""));
             httpPost.addHeader("sign", SignHelper.sign((Map)params));
             if (params != null && params.size() > 0) {
                 List<NameValuePair> pairs = new ArrayList<>();

@@ -1,5 +1,6 @@
 package demo.crypto;
 
+import demo.utils.URLConfigEnum;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.compression.CompressionCodecs;
@@ -20,8 +21,6 @@ import java.util.Map;
  */
 public class SignHelper {
 
-    //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
-    private static String KEYPATH = "src/main/resources/certificate/pro22.pfx";
     /**
      * 签名
      *
@@ -44,6 +43,8 @@ public class SignHelper {
         else if (paramsMap.containsKey("nsrsbh")) {
             String value = paramsMap.get("nsrsbh");
             claims.put("nsrsbh", getMD5(value));
+        } else {
+            throw new Exception("签名错误");
         }
 ////        String value = paramsMap.get("nsrsbh");
 ////        claims.put("nsrsbh", getMD5(value));
@@ -101,10 +102,10 @@ public class SignHelper {
      */
     protected static RSAPrivateKey loadPrivateKeyOfCA() throws UnrecoverableKeyException, KeyStoreException,
             NoSuchAlgorithmException, CertificateException, IOException {
-        FileInputStream in = new FileInputStream(KEYPATH);
+        FileInputStream in = new FileInputStream(URLConfigEnum.KEY_PATH.getValue());
         KeyStore ks = KeyStore.getInstance("pkcs12");
         //证书密码
-        String PASSWORD = "password";
+        String PASSWORD = URLConfigEnum.PASSWORD.getValue(); //"password";
         ks.load(in, PASSWORD.toCharArray());
         String alias = ks.aliases().nextElement();
         RSAPrivateKey caprk = (RSAPrivateKey) ks.getKey(alias, PASSWORD.toCharArray());

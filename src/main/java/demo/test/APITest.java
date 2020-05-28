@@ -27,6 +27,7 @@ public class APITest {
     public static String insertWithArray() throws Exception {
         //构造POST表单Map
         Map<String, String> paramsMap = BuildParam.buildInsertWithArrayPostParam();
+        System.out.println(paramsMap);
         return HttpClientUtil.post(URLConfigEnum.INSERT_WITH_ARRAY_URL.getUrl(),(Map)paramsMap);
     }
 
