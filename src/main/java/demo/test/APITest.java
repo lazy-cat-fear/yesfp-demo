@@ -3,6 +3,8 @@ package demo.test;
 import demo.utils.HttpClientUtil;
 import demo.utils.URLConfigEnum;
 import demo.entity.BuildParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -13,6 +15,8 @@ import java.util.Map;
  * @create: 2020/05/21 15:22
  */
 public class APITest {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(APITest.class);
 
     public static void main(String[] args) throws Exception {
 

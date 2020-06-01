@@ -105,7 +105,8 @@ public class HttpClientUtil {
         try {
             httpClient = createClient(url, getHttpConfig(configList));
             HttpPost httpPost = new HttpPost(url);
-            System.out.println("请求参数："+JSON.toJSONString(params).replace("\\",""));
+            LOGGER.info("请求地址："+url);
+            LOGGER.info("请求参数："+JSON.toJSONString(params).replace("\\",""));
             httpPost.addHeader("sign", SignHelper.sign((Map)params));
             if (params != null && params.size() > 0) {
                 List<NameValuePair> pairs = new ArrayList<>();
@@ -119,7 +120,9 @@ public class HttpClientUtil {
             HttpResponse httpResponse = httpClient.execute(httpPost);
             if (httpResponse.getStatusLine().getStatusCode() < 400) {
                 HttpEntity httpEntity = httpResponse.getEntity();
-                return EntityUtils.toString(httpEntity, "UTF-8");
+                String result = EntityUtils.toString(httpEntity, "UTF-8");
+                LOGGER.info("返回结果："+result.replace("\\",""));
+                return result;
             } else {
                 throw new Exception("http请求错误：" + httpResponse.getStatusLine().getStatusCode() + "," + httpResponse.getEntity().toString());
             }
@@ -148,7 +151,8 @@ public class HttpClientUtil {
         try {
             httpClient = createClient(url, getHttpConfig(configList));
             HttpPost httpPost = new HttpPost(url);
-            System.out.println("请求参数："+JSON.toJSONString(paramVO));
+            LOGGER.info("请求地址："+url);
+            LOGGER.info("请求参数："+JSON.toJSONString(paramVO).replace("\\",""));
             if (paramVO instanceof Map) {
                 httpPost.addHeader("sign", SignHelper.sign((Map)paramVO));
             }
@@ -162,6 +166,7 @@ public class HttpClientUtil {
             EntityUtils.consume(httpEntity);
 
             if (httpResponse.getStatusLine().getStatusCode() < 400) {
+                LOGGER.info("返回结果："+result.replace("\\",""));
                 return result;
             } else {
                 throw new Exception("http请求错误：" + httpResponse.getStatusLine().getStatusCode() + "," + result);
