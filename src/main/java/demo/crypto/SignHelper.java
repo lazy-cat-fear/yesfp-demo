@@ -44,7 +44,7 @@ public class SignHelper {
             String value = paramsMap.get("nsrsbh");
             claims.put("nsrsbh", getMD5(value));
         } else {
-            throw new Exception("签名错误");
+            //throw new Exception("签名错误");
         }
 ////        String value = paramsMap.get("nsrsbh");
 ////        claims.put("nsrsbh", getMD5(value));

@@ -129,6 +129,6 @@ public class BuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "264291i05h2080102sKs";
+        return "AK202005301227238300";
     }
 }
