@@ -45,6 +45,36 @@ public class BuildParam {
         paramsMap.put("autoAudit", "false");
         return paramsMap;
     }
+    /**
+     * 开票申请审核通过
+     */
+    public static Map<String, Object> issue(){
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("requestdatas", buildRequestDatas());
+        paramsMap.put("autoAudit", true);
+        return paramsMap;
+}
+    /**
+     * 发票红冲请求服务
+     *  电子发票部分红冲
+     */
+    public static  Map<String,Object> red(){
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("requestdatas", redRequestDatas());
+        paramsMap.put("url", buildUrlConfigs());
+        paramsMap.put("autoAudit", "false");
+        return paramsMap;
+    }
+    /**
+     * 开票蓝票请求服务--发票拆分
+     */
+    public static  Map<String,Object> insertWithSplit(){
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("requestdatas", buildRequestDatasSplit());
+        paramsMap.put("url", buildUrlConfigs());
+        paramsMap.put("autoAudit", "false");
+        return paramsMap;
+    }
 
     /**
      * url回掉配置
@@ -98,20 +128,52 @@ public class BuildParam {
         data.put("GMF_DZDH", "购买方地址电话");
         //组织编码，测试环境请一定使用测试环境的组织编码
         data.put("ORGCODE", "20160914001");//91110105MA0084MW37
-        data.put("JSHJ", 1.00);
+        data.put("JSHJ", 1000);
         data.put("items", buildItems());
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
     }
-
+    /**
+     * 构造redRequestdatas
+     */
+    private static String redRequestDatas() {
+        List<Object> datas = new ArrayList<Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("FPQQLSH", buildFpqqlsh());
+        //蓝色发票代码
+        data.put("fpDm", "044007679677");//91110105MA0084MW37
+        //蓝色发票号码
+        data.put("fpHm", "21427457");
+        data.put("JSHJ", -1);
+        data.put("items", buildItems());
+      //  data.put("ORGCODE", "");//91110105MA0084MW37
+        datas.add(data);
+        GsonBuilder builder = new GsonBuilder();
+        return builder.create().toJson(datas);
+    }
+    private static String buildRequestDatasSplit() {
+        List<Object> datas = new ArrayList<Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("FPQQLSH", buildFpqqlsh());
+        //测试环境请一定要使用测试纳税人识别号
+        data.put("XSF_NSRSBH", "201609140000001");//91110105MA0084MW37
+        data.put("XSF_MC", "销售方名称");
+        data.put("XSF_DZDH", "江苏省 无锡市   中国江苏省无锡市江阴市滨江西路");
+        data.put("GMF_MC", "接口测试组织-请勿修改");
+        data.put("JSHJ", 1000);
+        data.put("items", buildItems());
+        datas.add(data);
+        GsonBuilder builder = new GsonBuilder();
+        return builder.create().toJson(datas);
+    }
     /**
      * 构造request发票明细
      */
     private static List<Object> buildItems() {
         List<Object> items = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("XMJSHJ", "1.00");
+        data.put("XMJSHJ", "1000");
         data.put("XMMC", "住宅物业管理费2");
         //税率16%需要写成0.16的格式
         data.put("SL", 0.16);
@@ -129,6 +191,6 @@ public class BuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "AK202005301227238300";
+        return "AK202005301227238409";
     }
 }

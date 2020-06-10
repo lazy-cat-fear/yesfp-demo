@@ -17,7 +17,14 @@ public enum URLConfigEnum {
     RECOGNISE("/input-tax/api/ocr/v2/recognise?appid="),
     //开票状态查询服务
     QUERY_INBOICE_STATUS("/invoiceclient-web/api/invoiceApply/queryInvoiceStatus?appid="),
-
+    //开票申请审核通过
+    ISSUE("/invoiceclient-web/api/invoiceApply/issue?appid="),
+    //发票红冲请求服务
+    RED("/invoiceclient-web/api/invoiceApply/red?appid="),
+    //电子发票部分红冲
+    PART_RED("/invoiceclient-web/api/invoiceApply/part-red?appid="),
+    //开票蓝票请求服务--发票拆分
+   INSERT_WITH_SPLIT ("/invoiceclient-web/api/invoiceApply/insertWithSplit?appid="),
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
     KEY_PATH("src/main/resources/certificate/pro22.pfx"),
 //    KEY_PATH("src/main/resources/certificate/正式环境通讯证书.pfx"),
