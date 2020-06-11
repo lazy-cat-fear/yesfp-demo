@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class StaBookBuildParam {
     /**
-     * ORC识别
+     * OCR识别
      * @return
      */
     public static Map<String, Object> buildRecognisePostParam() {
@@ -31,11 +31,11 @@ public class StaBookBuildParam {
     /**
      * 识别结果保存台帐
      */
-    public static Map<String,Object> orc_Save(){
+    public static Map<String,Object> OCR_Save(){
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("nsrsbh", "201609140000001");
         paramsMap.put("orgcode", "20160914001");
-        paramsMap.put("bills",orc_SaveBills());
+        paramsMap.put("bills",OCR_SaveBills());
 
         return paramsMap;
     }
@@ -44,19 +44,19 @@ public class StaBookBuildParam {
     /**
      * 保存报销票据明细
      */
-    public static List<Object> orc_SaveBills(){
+    public static List<Object> OCR_SaveBills(){
         List<Object> bills = new ArrayList<Object>();
         Map<String, Object> datas = new HashMap<String, Object>();
         datas.put("imageId","60214");
         datas.put("billType","train");
-        datas.put("data", orc_SaveTrainData());
+        datas.put("data", OCR_SaveTrainData());
         bills.add(datas);
         return bills;
     }
     /**
      * 机打发票data
      */
-    public static Map<String,Object> orc_SaveMachineData(){
+    public static Map<String,Object> OCR_SaveMachineData(){
         Map<String, Object> data = new HashMap<String, Object>();
         //开票日期"yyyyMMdd"
         data.put("date","20200610");
@@ -86,7 +86,7 @@ public class StaBookBuildParam {
      * 增值税发票data
      *//*
 
-    public static  Map<String, Object> orc_SaveInvoiceData(){
+    public static  Map<String, Object> OCR_SaveInvoiceData(){
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("hasExist",false);
         data.put("hjje",5000);
@@ -136,7 +136,7 @@ public class StaBookBuildParam {
     /**
      * 航空电子行程单DATA
      */
-    public static  Map<String, Object> orc_SaveAirData(){
+    public static  Map<String, Object> OCR_SaveAirData(){
         Map<String, Object> data = new HashMap<String, Object>();
         //开票日期"yyyyMMdd"
         data.put("date","20200610");
@@ -186,7 +186,7 @@ public class StaBookBuildParam {
     /**
      * 火车票台账data
      */
-    public static  Map<String, Object> orc_SaveTrainData(){
+    public static  Map<String, Object> OCR_SaveTrainData(){
         Map<String, Object> data = new HashMap<String, Object>();
         //开票日期"yyyyMMdd"
         data.put("date","20200610");
@@ -211,7 +211,7 @@ public class StaBookBuildParam {
      * @return
      */
 
-    public static  Map<String, Object> orc_SaveTaxiData(){
+    public static  Map<String, Object> OCR_SaveTaxiData(){
         Map<String, Object> data = new HashMap<String, Object>();
         //发票代码
         data.put("invoiceCode","211001111012");
@@ -327,4 +327,39 @@ public class StaBookBuildParam {
         paramsMap.put("submitDate_end","2020-06-11");
         return paramsMap;
     }
+
+    /**
+     * 个人票夹提交发票到报销台账_全票种
+     * @return
+     */
+    public static Map<String,Object> commit(){
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("usermobile", "15011181852");
+        paramsMap.put("useremail", "wangyer@yonyou.com");
+        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("nsrsbh", "201609140000001");
+        paramsMap.put("submitter", "提交人");
+        paramsMap.put("srcBillCode", "23456789");
+        paramsMap.put("srcBillType", "taxi");
+        paramsMap.put("reimburseUser", "测试报销人1");
+        paramsMap.put("returnEnclosure", "Y");
+        paramsMap.put("busiOp", "1");
+        paramsMap.put("summarys", summarys());
+        return paramsMap;
+    }
+    public  static List<Object> summarys(){
+    List<Object> datas = new ArrayList<Object>();
+    Map<String, Object> data1 = new HashMap<String, Object>();
+    Map<String, Object> data2 = new HashMap<String, Object>();
+        data1.put("invoiceNum","68706393");
+        data1.put("invoiceCode","042001700107");
+        data1.put("billType","invoice");
+        data2.put("invoiceNum","51266661");
+        data2.put("invoiceCode","111001881002");
+        data2.put("billType","taxi");
+        datas.add(data1);
+        datas.add(data2);
+      return datas;
+    }
+
 }

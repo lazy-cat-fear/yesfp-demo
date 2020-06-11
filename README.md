@@ -37,14 +37,14 @@
 
 
 ####StaBookBuildParam.java放置全票种参数
-- buildRecognisePostParam()  ORC识别
--  orc_Save() 识别结果保存台帐
-- orc_SaveBills() 保存报销票据明细
-- orc_SaveMachineData() 机打发票data
-- orc_SaveAirData() 航空电子行程单DATA
+- buildRecognisePostParam()  OCR识别
+-  OCR_Save() 识别结果保存台帐
+- OCR_SaveBills() 保存报销票据明细
+- OCR_SaveMachineData() 机打发票data
+- OCR_SaveAirData() 航空电子行程单DATA
 - itemList() 航空电子行程单DATA里面itemList参数设置
-- orc_SaveTrainData() 火车票台账data
-- orc_SaveTaxiData() 出租车保存报销data
+- OCR_SaveTrainData() 火车票台账data
+- OCR_SaveTaxiData() 出租车保存报销data
 - reimbursed() 台账报销
 -  reimbursedBills() 台账报销Bills参数设置
 - cancelReimbursed() 台账取消报销
@@ -53,3 +53,5 @@
 - cancelAccount() 台账取消记账
 - delete() 报销台账删除
 - find()   飞机票、火车票，出租车台账查询
+- commit() 个人票夹提交发票到报销台账_全票种
+- summary() 个人票夹提交发票到报销台账_全票种中summary参数设置

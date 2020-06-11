@@ -45,6 +45,8 @@ public enum URLConfigEnum {
     TRAIN("/input-tax/api/bill-collections/train?pagenum=1&pagesize=15&appid="),
     //出租车台账查询
     TAXI("/input-tax/api/bill-collections/taxi?pagenum=1&pagesize=15&appid="),
+    //个人票夹提交发票到报销台账_全票种
+    COMMIT("/piaoeda-web/api/bill/v2/commit?appid="),
 //    KEY_PATH("src/main/resources/certificate/正式环境通讯证书.pfx"),
     //证书密码
     PASSWORD("password");

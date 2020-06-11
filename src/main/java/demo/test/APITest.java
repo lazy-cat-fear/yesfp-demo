@@ -35,7 +35,7 @@ public class APITest {
         //开票蓝票请求服务--发票拆分
 //        String result=insertWithSplit();
         //识别结果保存台账
-     // String result = orc_Save();
+     // String result = OCR_Save();
         //台账报销
      // String result =  reimbursed();
         //台账取消报销
@@ -51,7 +51,9 @@ public class APITest {
         //火车票台账查询
          //String result= train();
         //出租车台账查询
-        String result= taxi();
+
+     //   String result= taxi();
+        String result = commit();
         System.out.println(result);
 
     }
@@ -106,8 +108,8 @@ public class APITest {
     /**
      * 识别结果保存台帐
      */
-    public static String orc_Save() throws Exception {
-        Map<String, Object> paramsMap = StaBookBuildParam.orc_Save();
+    public static String OCR_Save() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.OCR_Save();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.OCR_SAVE.getUrl(), paramsMap);
     }
@@ -175,5 +177,14 @@ public class APITest {
         Map<String, Object> paramsMap = StaBookBuildParam.find();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.TAXI.getUrl(), paramsMap);
+    }
+    /**
+     * 个人票夹提交发票到报销台账_全票种
+     * @return
+     */
+    public static String commit() throws Exception {
+        Map<String, Object> paramsMap = StaBookBuildParam.commit();
+        //json格式
+        return HttpClientUtil.jsonPost(URLConfigEnum.COMMIT.getUrl(), paramsMap);
     }
 }
