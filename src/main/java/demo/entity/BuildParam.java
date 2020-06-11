@@ -7,12 +7,11 @@ import java.util.*;
 
 /**
  * @program: yesfp-demo
- * @description:
+ * @description: 开票
  * @author: kw
  * @create: 2020/05/21 12:41
  */
 public class BuildParam {
-
 
     public static Map<String, String> buildQueryInvoiceStatusPostParam() {
         Map<String, String> paramsMap = new HashMap<String, String>();
@@ -20,17 +19,7 @@ public class BuildParam {
         return paramsMap;
     }
 
-    public static Map<String, Object> buildRecognisePostParam() {
-        Map<String, Object> paramsMap = new HashMap<String, Object>();
-        //paramsMap.put("nsrsbh", "201609140000001");
-        paramsMap.put("nsrsbh", "91110105MA0084MW37");
-        //paramsMap.put("orgcode", "20160914001");
-        paramsMap.put("orgcode", "91110105MA0084MW37");
-        //注意 base64编码不能有换行  选择BASE64Encoder需要将换行处理  用Base64比较好
-        //paramsMap.put("file", Base64Util.imageToBase64("D:\\3.jpg"));
-        paramsMap.put("file", Base64Util.NetImageToBase64("https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1590057248&di=a298d5f9728d9ded45906a643d8b8b2d&src=http://5b0988e595225.cdn.sohucs.com/images/20180810/75d14550cff44cf4bcc0346dd50c3aae.jpeg"));//ImageToBase64("D:\\1.png"));
-        return paramsMap;
-    }
+
 
     /**
      * 构造 开票蓝票请求服务 表单数据
@@ -130,6 +119,7 @@ public class BuildParam {
         data.put("ORGCODE", "20160914001");//91110105MA0084MW37
         data.put("JSHJ", 1000);
         data.put("items", buildItems());
+
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -152,6 +142,11 @@ public class BuildParam {
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
     }
+
+    /**
+     * 拆分
+     * @return
+     */
     private static String buildRequestDatasSplit() {
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();

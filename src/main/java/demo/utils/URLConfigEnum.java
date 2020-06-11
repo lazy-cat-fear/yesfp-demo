@@ -27,10 +27,29 @@ public enum URLConfigEnum {
    INSERT_WITH_SPLIT ("/invoiceclient-web/api/invoiceApply/insertWithSplit?appid="),
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
     KEY_PATH("src/main/resources/certificate/pro22.pfx"),
+    //识别结果保存台帐
+    OCR_SAVE("/input-tax/api/bill-collections/ocr-save?appid="),
+    //台账报销
+    REIMBURSED("/input-tax/api/bill-collections/reimbursed?appid="),
+    //台账取消报销
+    CANCEL_REIMBURSED("/input-tax/api/bill-collections/cancel-reimbursed?appid="),
+    //台账记账
+    ACCOUNT("/input-tax/api/bill-collections/account?appid="),
+    //台账记账
+    CANCEL_ACCOUNT("/input-tax/api/bill-collections/cancel-account?appid="),
+    //报销台账删除
+    DELETE("/input-tax/api/bill-collections/delete?appid="),
+    //飞机票台账查询
+    AIR("/input-tax/api/bill-collections/air?pagenum=1&pagesize=15&appid="),
+    //火车票台账查询
+    TRAIN("/input-tax/api/bill-collections/train?pagenum=1&pagesize=15&appid="),
+    //出租车台账查询
+    TAXI("/input-tax/api/bill-collections/taxi?pagenum=1&pagesize=15&appid="),
 //    KEY_PATH("src/main/resources/certificate/正式环境通讯证书.pfx"),
     //证书密码
     PASSWORD("password");
 //    PASSWORD("密码");
+
 
     //测试环境有测试appid和证书，正式环境有正式appid和证书，请务必对应使用
     //测试环境appid就用这个，正式环境需要替换成正式的
@@ -50,5 +69,4 @@ public enum URLConfigEnum {
     public String getUrl() {
         return DOMAIN + value + APPID;
     }
-
 }
