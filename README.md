@@ -19,8 +19,9 @@
 - resources/certificate/电子发票OpenAPI文档V1.24.html
 - resources\certificate\全票种-直接对接台账（ocr方式，不通过个人票夹）.pdf
 
-##说明
-####BuildParam.java放置电子发票参数
+## 说明
+#### BuildParam.java放置电子发票参数
+
 - buildInsertWithArrayPostParam() 构造开票蓝票请求服务 表单数据
 - issue() 开票申请审核通过
 - red() 发票红冲请求服务及电子发票部分红冲
@@ -36,7 +37,8 @@
 不要包含window系统文件名限制的特殊字符
 
 
-####StaBookBuildParam.java放置全票种参数
+#### StaBookBuildParam.java放置全票种参数
+
 - buildRecognisePostParam()  OCR识别
 -  OCR_Save() 识别结果保存台帐
 - OCR_SaveBills() 保存报销票据明细
@@ -55,3 +57,16 @@
 - find()   飞机票、火车票，出租车台账查询
 - commit() 个人票夹提交发票到报销台账_全票种
 - summary() 个人票夹提交发票到报销台账_全票种中summary参数设置
+
+#### ReimburseCollection.java放置电子发票报销应用参数
+
+-  uploadpdf()  发票上传与发票上传V2，V2返回值增加疑票状态
+-  pdfFiles() uploadpdf中pdfFile的参数配置
+-  CollDelete() 发票取消上传参数设置
+-  CollReimbursed() 发票已报销
+-  CollUnreimbursed() 发票取消报销
+-  query() 报销台账查询接口（新）
+-  accountStatus()   入账
+-  CollCancelAccount() 取消入账
+-  invoices() 为CollDelete()、CollReimbursed()、CollUnreimbursed()、accountStatus()、 
+CollCancelAccount()类中invoices参数进行设置

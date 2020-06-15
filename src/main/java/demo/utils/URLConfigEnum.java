@@ -25,8 +25,6 @@ public enum URLConfigEnum {
     PART_RED("/invoiceclient-web/api/invoiceApply/part-red?appid="),
     //开票蓝票请求服务--发票拆分
    INSERT_WITH_SPLIT ("/invoiceclient-web/api/invoiceApply/insertWithSplit?appid="),
-    //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
-    KEY_PATH("src/main/resources/certificate/pro22.pfx"),
     //识别结果保存台帐
     OCR_SAVE("/input-tax/api/bill-collections/ocr-save?appid="),
     //台账报销
@@ -47,20 +45,38 @@ public enum URLConfigEnum {
     TAXI("/input-tax/api/bill-collections/taxi?pagenum=1&pagesize=15&appid="),
     //个人票夹提交发票到报销台账_全票种
     COMMIT("/piaoeda-web/api/bill/v2/commit?appid="),
-//    KEY_PATH("src/main/resources/certificate/正式环境通讯证书.pfx"),
+    //发票上传
+    UPLOADPDF("/invoiceclient-web/api/reimburseCollection/uploadpdf?appid="),
+    //发票取消上传
+    COLLECTION_DELETE("/invoiceclient-web/api/reimburseCollection/delete?appid="),
+    //发票已报销
+    COLLECTION_REIMBURSED ("/invoiceclient-web/api/reimburseCollection/reimbursed?appid="),
+    //发票取消报销
+    COLLECTION_UNREIMBURSED("/invoiceclient-web/api/reimburseCollection/unreimbursed?appid="),
+    //报销台账查询接口（新）
+    QUERY("/invoiceclient-web/api/reimburseCollection/query?appid="),
+    //入账
+    ACCOUNT_STATUS("/invoiceclient-web/api/reimburseCollection/accountStatus?appid="),
+    //取消入账
+    COLLECTION_CANCEL_ACCOUNT ("/invoiceclient-web/api/reimburseCollection/cancelAccount?appid="),
+    //发票上传V2
+    V2_UPLOADPDF("/input-tax/api/reimburseCollection/v2/uploadpdf?appid="),
+    //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
+   KEY_PATH("src/main/resources/certificate/pro22.pfx"),
+    //  KEY_PATH("src/main/resources/certificate/shhtxc.p12"),
     //证书密码
-    PASSWORD("password");
-//    PASSWORD("密码");
+   PASSWORD("password");
+    //    PASSWORD("123456");
 
 
     //测试环境有测试appid和证书，正式环境有正式appid和证书，请务必对应使用
     //测试环境appid就用这个，正式环境需要替换成正式的
-//    private static String APPID = "正式环境appid";
+    //  private static String APPID = "4cfd430c-1175-4fdc-b6a3-db596f810b1d";
     private static String APPID = "commontesterCA";
 
     //这个是测试环境的域名，正式环境为https://fapiao.yonyoucloud.com
-//    private static String DOMAIN = "https://fapiao.yonyoucloud.com";
-    private static String DOMAIN = "https://yesfp.yonyoucloud.com";
+    //   private static String DOMAIN = "https://fapiao.yonyoucloud.com";
+   private static String DOMAIN = "https://yesfp.yonyoucloud.com";
 
     private String value;
     URLConfigEnum(String value) {
