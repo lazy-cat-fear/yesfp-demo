@@ -17,8 +17,8 @@
 
 #### API文档
 - resources/certificate/电子发票OpenAPI文档V1.24.html
-- resources\certificate\全票种-直接对接台账（ocr方式，不通过个人票夹）.pdf
-
+- resources/certificate/全票种-直接对接台账（ocr方式，不通过个人票夹）.pdf
+- resources/certificate/电子发票报销应用OpenAPI第2版(包含电票上传).html
 ## 说明
 #### BuildParam.java放置电子发票参数
 

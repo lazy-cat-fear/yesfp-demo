@@ -63,15 +63,15 @@ public enum URLConfigEnum {
     V2_UPLOADPDF("/input-tax/api/reimburseCollection/v2/uploadpdf?appid="),
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
    KEY_PATH("src/main/resources/certificate/pro22.pfx"),
-    //  KEY_PATH("src/main/resources/certificate/shhtxc.p12"),
+    //  KEY_PATH("证书"),
     //证书密码
    PASSWORD("password");
-    //    PASSWORD("123456");
+    //    PASSWORD("密码");
 
 
     //测试环境有测试appid和证书，正式环境有正式appid和证书，请务必对应使用
     //测试环境appid就用这个，正式环境需要替换成正式的
-    //  private static String APPID = "4cfd430c-1175-4fdc-b6a3-db596f810b1d";
+    //  private static String APPID = "";
     private static String APPID = "commontesterCA";
 
     //这个是测试环境的域名，正式环境为https://fapiao.yonyoucloud.com
