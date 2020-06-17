@@ -11,6 +11,8 @@ public enum URLConfigEnum {
 
     //如果需要测试其他接口 直接在这里添加枚举即可
 
+    //开票申请删除
+    INVOICE_APPLY_DEL_URL("/invoiceclient-web/api/invoiceApply/del?appid="),
     //开票蓝票请求服务
     INSERT_WITH_ARRAY_URL("/invoiceclient-web/api/invoiceApply/insertWithArray?appid="),
     //OCR识别接口

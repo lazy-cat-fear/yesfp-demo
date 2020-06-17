@@ -11,11 +11,28 @@ import java.util.*;
  * @author: kw
  * @create: 2020/05/21 12:41
  */
-public class BuildParam {
+public class InvoiceBuildParam {
 
+    /**
+     * 构造 开票状态查询服务 表单数据
+     */
     public static Map<String, String> buildQueryInvoiceStatusPostParam() {
         Map<String, String> paramsMap = new HashMap<String, String>();
         paramsMap.put("fpqqlsh", buildFpqqlsh());
+        return paramsMap;
+    }
+
+    /**
+     * 构造 开票申请删除 表单数据
+     */
+    public static Map<String, Object> buildInvoiceApplyDelParam() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        List<Object> datas = new ArrayList<>();
+        Map<String, String> requestdatas = new HashMap();
+        requestdatas.put("FPQQLSH",buildFpqqlsh());
+        requestdatas.put("XSF_NSRSBH","9144011476190205X4");
+        datas.add(requestdatas);
+        paramsMap.put("requestdatas", new GsonBuilder().create().toJson(datas));
         return paramsMap;
     }
 
