@@ -104,7 +104,7 @@ public class InvoiceBuildParam {
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("fpqqlsh", buildFpqqlsh());
-        data.put("address", "15545183180");
+        data.put("address", "155****3180");
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -117,7 +117,7 @@ public class InvoiceBuildParam {
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("fpqqlsh", buildFpqqlsh());
-        data.put("address", "jiajw11@yonyou.com");
+        data.put("address", "j*****11@yonyou.com");
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -221,26 +221,6 @@ public class InvoiceBuildParam {
         return items;
     }
 
-    /**
-     *
-     * 开票删除
-     */
-    private static  Map<String,Object> del() {
-
-        Map<String, Object> paramsMap = new HashMap<String, Object>();
-        paramsMap.put("requestdatas", delRequestDatas());
-        return paramsMap;
-    }
-    private static String delRequestDatas() {
-        List<Object> datas = new ArrayList<Object>();
-        Map<String, Object> data = new HashMap<String, Object>();
-        data.put("FPQQLSH", buildFpqqlsh());
-        //销售方纳税人识别号
-        data.put("XSF_NSRSBH", "");
-        datas.add(data);
-        GsonBuilder builder = new GsonBuilder();
-        return builder.create().toJson(datas);
-    }
 
     /**
      * 获取发票请求流水号
