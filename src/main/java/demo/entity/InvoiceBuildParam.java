@@ -78,7 +78,9 @@ public class InvoiceBuildParam {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("requestdatas", buildRequestDatasSplit());
         paramsMap.put("url", buildUrlConfigs());
-        paramsMap.put("autoAudit", "false");
+        paramsMap.put("autoAudit", "true");
+        paramsMap.put("email",buildEmailConfigs());
+        paramsMap.put("sms",buildSmsConfigs());
         return paramsMap;
     }
 
@@ -102,7 +104,7 @@ public class InvoiceBuildParam {
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("fpqqlsh", buildFpqqlsh());
-        data.put("address", "123123123123");
+        data.put("address", "15545183180");
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -115,7 +117,7 @@ public class InvoiceBuildParam {
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("fpqqlsh", buildFpqqlsh());
-        data.put("address", "123@163.com");
+        data.put("address", "jiajw11@yonyou.com");
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -176,8 +178,10 @@ public class InvoiceBuildParam {
         data.put("XSF_MC", "销售方名称");
         data.put("XSF_DZDH", "江苏省 无锡市   中国江苏省无锡市江阴市滨江西路");
         data.put("GMF_MC", "接口测试组织-请勿修改");
-        data.put("JSHJ", 1000);
+        data.put("GMF_MC", "接口测试组织-请勿修改");
+        data.put("JSHJ", 2);
         data.put("items", buildItems());
+       // data.put("items", buildItems1());
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -187,6 +191,7 @@ public class InvoiceBuildParam {
      */
     private static List<Object> buildItems() {
         List<Object> items = new ArrayList<Object>();
+        Map<String, Object> data1 = new HashMap<String, Object>();
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("XMJSHJ", 1);
         data.put("XMMC", "硅胶5299B");
@@ -194,15 +199,48 @@ public class InvoiceBuildParam {
         data.put("GGXH", "25kg/桶");
         data.put("DW", "千克");
         data.put("XMSL", 0);
-        data.put("SE", -57.52);
+       // data.put("SE", -57.52);
         //税率16%需要写成0.16的格式
         data.put("SL", 0.13);
         //SPBM字段为商品税收分类编码，不同的商品会有不同的编码，不对应的话会影响报税，需要咨询下公司财务
         data.put("SPBM", "1070213070000000000");
         items.add(data);
+
+        data1.put("XMJSHJ", 1);
+        data1.put("XMMC", "硅胶5299B");
+        data1.put("XMBM", "202020012");
+        data1.put("GGXH", "25kg/桶");
+        data1.put("DW", "千克");
+        data1.put("XMSL", 0);
+        // data.put("SE", -57.52);
+        //税率16%需要写成0.16的格式
+        data1.put("SL", 0.13);
+        //SPBM字段为商品税收分类编码，不同的商品会有不同的编码，不对应的话会影响报税，需要咨询下公司财务
+        data1.put("SPBM", "1070213070000000000");
+        items.add(data1);
         return items;
     }
 
+    /**
+     *
+     * 开票删除
+     */
+    private static  Map<String,Object> del() {
+
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("requestdatas", delRequestDatas());
+        return paramsMap;
+    }
+    private static String delRequestDatas() {
+        List<Object> datas = new ArrayList<Object>();
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("FPQQLSH", buildFpqqlsh());
+        //销售方纳税人识别号
+        data.put("XSF_NSRSBH", "");
+        datas.add(data);
+        GsonBuilder builder = new GsonBuilder();
+        return builder.create().toJson(datas);
+    }
 
     /**
      * 获取发票请求流水号
@@ -211,6 +249,6 @@ public class InvoiceBuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "1001A11000000013MW63";
+        return "1001A11000000013MW7b";
     }
 }
