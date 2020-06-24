@@ -1,10 +1,10 @@
 package demo.test;
 
+import demo.entity.InvoiceBuildParam;
 import demo.entity.ReimburseCollection;
 import demo.entity.StaBookBuildParam;
 import demo.utils.HttpClientUtil;
 import demo.utils.URLConfigEnum;
-import demo.entity.BuildParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +21,8 @@ public class APITest {
     private static Logger LOGGER = LoggerFactory.getLogger(APITest.class);
 
     public static void main(String[] args) throws Exception {
-
+//删除
+        String result = invoiceApplyDel();
 //    String result = queryInvoiceStatus();
         //OCR识别接口
         //String result = recognise();
@@ -68,15 +69,19 @@ public class APITest {
         //取消入账
       //String result =CollCancelAccount();
         //发票上传V2
-        String result =V2Uploadpdf();
+      //  String result =V2Uploadpdf();
         System.out.println(result);
 
     }
+    public static String invoiceApplyDel() throws Exception{
+        Map<String, Object> paramsMap = InvoiceBuildParam.buildInvoiceApplyDelParam();
+        return HttpClientUtil.post(URLConfigEnum.INVOICE_APPLY_DEL_URL.getUrl(), paramsMap);
 
+    }
     //开票蓝票请求服务
     public static String insertWithArray() throws Exception {
         //构造POST表单Map
-        Map<String, String> paramsMap = BuildParam.buildInsertWithArrayPostParam();
+        Map<String, String> paramsMap = InvoiceBuildParam.buildInsertWithArrayPostParam();
         System.out.println(paramsMap);
         return HttpClientUtil.post(URLConfigEnum.INSERT_WITH_ARRAY_URL.getUrl(), (Map) paramsMap);
     }
@@ -91,32 +96,32 @@ public class APITest {
 
     //开票蓝票请求服务--发票拆分
     public static String insertWithSplit() throws Exception {
-        Map<String, Object> paramsMap = BuildParam.insertWithSplit();
+        Map<String, Object> paramsMap = InvoiceBuildParam.insertWithSplit();
         return HttpClientUtil.post(URLConfigEnum.INSERT_WITH_SPLIT.getUrl(), (Map) paramsMap);
     }
 
     //开票状态查询服务
     public static String queryInvoiceStatus() throws Exception {
         //构造POST表单Map
-        Map<String, String> paramsMap = BuildParam.buildQueryInvoiceStatusPostParam();
+        Map<String, String> paramsMap = InvoiceBuildParam.buildQueryInvoiceStatusPostParam();
         return HttpClientUtil.post(URLConfigEnum.QUERY_INBOICE_STATUS.getUrl(), (Map) paramsMap);
     }
 
     //开票申请审核通过
     public static String issue() throws Exception {
-        Map<String, Object> paramsMap = BuildParam.issue();
+        Map<String, Object> paramsMap = InvoiceBuildParam.issue();
         return HttpClientUtil.post(URLConfigEnum.ISSUE.getUrl(), (Map) paramsMap);
     }
 
     //发票红冲请求服务
     public static String red() throws Exception {
-        Map<String, Object> paramsMap = BuildParam.red();
+        Map<String, Object> paramsMap = InvoiceBuildParam.red();
         return HttpClientUtil.post(URLConfigEnum.RED.getUrl(), (Map) paramsMap);
     }
 
     //电子发票部分红冲
     public static String partRed() throws Exception {
-        Map<String, Object> paramsMap = BuildParam.red();
+        Map<String, Object> paramsMap = InvoiceBuildParam.red();
         return HttpClientUtil.post(URLConfigEnum.PART_RED.getUrl(), (Map) paramsMap);
     }
 
