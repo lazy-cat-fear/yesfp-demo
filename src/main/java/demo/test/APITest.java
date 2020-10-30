@@ -21,63 +21,74 @@ public class APITest {
     private static Logger LOGGER = LoggerFactory.getLogger(APITest.class);
 
     public static void main(String[] args) throws Exception {
-//删除
-        String result = invoiceApplyDel();
-//    String result = queryInvoiceStatus();
+        //发票打印
+        String result = taxPrint();
+        //删除
+        //String result = invoiceApplyDel();
+        //开票状态查询服务
+        //String result = queryInvoiceStatus();
         //OCR识别接口
         //String result = recognise();
         //开票申请审核通过
-//      String result = issue();
-     //发票红冲请求服务
-//       String result =red();
-        // 电子发票部分红冲
-//       String result =partRed();
+        //String result = issue();
+        //发票红冲请求服务
+        //String result =red();
+        //电子发票部分红冲
+        //String result =partRed();
         //开票蓝票请求服务
-   //    String result = insertWithArray();
+//        String result = insertWithArray();
         //开票蓝票请求服务--发票拆分
-//        String result=insertWithSplit();
+        //String result=insertWithSplit();
         //识别结果保存台账
-     // String result = OCR_Save();
+        // String result = OCR_Save();
         //台账报销
-     // String result =  reimbursed();
+        // String result =  reimbursed();
         //台账取消报销
-     //  String result=cancelReimbursed();
+        //  String result=cancelReimbursed();
         //台账记账
-      // String result=account();
+        // String result=account();
         //台账取消记账
-       // String result= cancelAccount();
+        // String result= cancelAccount();
         //报销台账删除
-       // String result=delete();
+        // String result=delete();
         //飞机票台账查询
-       // String result= air();
+        // String result= air();
         //火车票台账查询
-         //String result= train();
+        //String result= train();
         //出租车台账查询
-
-     //   String result= taxi();
-      //  String result = commit();
+        //String result= taxi();
+        //个人票夹提交发票到报销台账_全票种
+        //  String result = commit();
         //个人发票上传
         //String result =uploadpdf();
         //发票取消上传
-       // String result =CollDelete();
+        // String result =CollDelete();
         //发票已报销
-     //   String result =CollReimbursed();
+        //String result =CollReimbursed();
         //发票取消报销
-       // String result =CollUnreimbursed();
+        // String result =CollUnreimbursed();
         //入账
-       // String result =CollQuery();
+        // String result =CollQuery();
         //取消入账
-      //String result =CollCancelAccount();
+        //String result =CollCancelAccount();
         //发票上传V2
-      //  String result =V2Uploadpdf();
+        //String result =V2Uploadpdf();
         System.out.println(result);
 
     }
-    public static String invoiceApplyDel() throws Exception{
+
+    public static String taxPrint() throws Exception{
+        Map<String, Object> paramsMap = InvoiceBuildParam.buildTaxPrintParam();
+        return HttpClientUtil.jsonPost(URLConfigEnum.TAX_PRINT.getUrl(), paramsMap);
+    }
+
+    //删除
+    public static String invoiceApplyDel() throws Exception {
         Map<String, Object> paramsMap = InvoiceBuildParam.buildInvoiceApplyDelParam();
         return HttpClientUtil.post(URLConfigEnum.INVOICE_APPLY_DEL_URL.getUrl(), paramsMap);
 
     }
+
     //开票蓝票请求服务
     public static String insertWithArray() throws Exception {
         //构造POST表单Map
@@ -135,13 +146,14 @@ public class APITest {
     }
 
     /**
-     *台账报销
+     * 台账报销
      */
     public static String reimbursed() throws Exception {
         Map<String, Object> paramsMap = StaBookBuildParam.reimbursed();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.REIMBURSED.getUrl(), paramsMap);
     }
+
     /**
      * 台账取消报销
      */
@@ -150,30 +162,34 @@ public class APITest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.CANCEL_REIMBURSED.getUrl(), paramsMap);
     }
+
     /**
-     *台账记账
+     * 台账记账
      */
     public static String account() throws Exception {
         Map<String, Object> paramsMap = StaBookBuildParam.account();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.ACCOUNT.getUrl(), paramsMap);
     }
+
     /**
-     *台账取消记账
+     * 台账取消记账
      */
     public static String cancelAccount() throws Exception {
         Map<String, Object> paramsMap = StaBookBuildParam.cancelAccount();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.CANCEL_ACCOUNT.getUrl(), paramsMap);
     }
+
     /**
-     *报销台账删除
+     * 报销台账删除
      */
     public static String delete() throws Exception {
         Map<String, Object> paramsMap = StaBookBuildParam.delete();
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.DELETE.getUrl(), paramsMap);
     }
+
     /**
      * 飞机票台账查询
      */
@@ -182,6 +198,7 @@ public class APITest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.AIR.getUrl(), paramsMap);
     }
+
     /**
      * 火车票台账查询
      */
@@ -190,6 +207,7 @@ public class APITest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.TRAIN.getUrl(), paramsMap);
     }
+
     /**
      * 出租车台账查询
      */
@@ -198,8 +216,10 @@ public class APITest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.TAXI.getUrl(), paramsMap);
     }
+
     /**
      * 个人票夹提交发票到报销台账_全票种
+     *
      * @return
      */
     public static String commit() throws Exception {
@@ -207,52 +227,58 @@ public class APITest {
         //json格式
         return HttpClientUtil.jsonPost(URLConfigEnum.COMMIT.getUrl(), paramsMap);
     }
+
     //发票上传
-    public static String uploadpdf() throws Exception{
+    public static String uploadpdf() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.uploadpdf();
         return HttpClientUtil.jsonPost(URLConfigEnum.UPLOADPDF.getUrl(), paramsMap);
 
     }
+
     //发票取消上传
-    public static String CollDelete() throws Exception{
+    public static String CollDelete() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.CollDelete();
         return HttpClientUtil.jsonPost(URLConfigEnum.COLLECTION_DELETE.getUrl(), paramsMap);
 
     }
+
     //发票已报销
-    public static String CollReimbursed() throws Exception{
+    public static String CollReimbursed() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.CollReimbursed();
         return HttpClientUtil.jsonPost(URLConfigEnum.COLLECTION_REIMBURSED.getUrl(), paramsMap);
 
     }
+
     //发票取消报销
-    public static String CollUnreimbursed() throws Exception{
+    public static String CollUnreimbursed() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.CollUnreimbursed();
         return HttpClientUtil.jsonPost(URLConfigEnum.COLLECTION_UNREIMBURSED.getUrl(), paramsMap);
 
     }
+
     //报销台账查询接口（新）
-    public static String CollQuery() throws Exception{
+    public static String CollQuery() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.query();
         return HttpClientUtil.jsonPost(URLConfigEnum.QUERY.getUrl(), paramsMap);
 
     }
     //入账
 
-    public static String accountStatus() throws Exception{
+    public static String accountStatus() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.accountStatus();
         return HttpClientUtil.jsonPost(URLConfigEnum.ACCOUNT_STATUS.getUrl(), paramsMap);
 
     }
 
     //取消入账
-    public static String CollCancelAccount() throws Exception{
+    public static String CollCancelAccount() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.CollCancelAccount();
         return HttpClientUtil.jsonPost(URLConfigEnum.COLLECTION_CANCEL_ACCOUNT.getUrl(), paramsMap);
 
     }
+
     //发票上传V2
-    public static String V2Uploadpdf() throws Exception{
+    public static String V2Uploadpdf() throws Exception {
         Map<String, Object> paramsMap = ReimburseCollection.uploadpdf();
         return HttpClientUtil.jsonPost(URLConfigEnum.V2_UPLOADPDF.getUrl(), paramsMap);
 

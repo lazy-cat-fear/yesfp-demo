@@ -11,8 +11,9 @@ public enum URLConfigEnum {
 
     //如果需要测试其他接口 直接在这里添加枚举即可
 
+    //发票打印
+    TAX_PRINT("/output-tax/api/invoice-his/print?appid="),
     //开票申请删除
-    //开票申请删除	    //开票申请删除
     INVOICE_APPLY_DEL_URL("/invoiceclient-web/api/invoiceApply/del?appid="),
     //开票蓝票请求服务
     INSERT_WITH_ARRAY_URL("/invoiceclient-web/api/invoiceApply/insertWithArray?appid="),
@@ -61,7 +62,7 @@ public enum URLConfigEnum {
     //入账
     ACCOUNT_STATUS("/invoiceclient-web/api/reimburseCollection/accountStatus?appid="),
     //取消入账
-    COLLECTION_CANCEL_ACCOUNT ("/invoiceclient-web/api/reimburseCollection/cancelAccount?appid="),
+    COLLECTION_CANCEL_ACCOUNT("/invoiceclient-web/api/reimburseCollection/cancelAccount?appid="),
     //发票上传V2
     V2_UPLOADPDF("/input-tax/api/reimburseCollection/v2/uploadpdf?appid="),
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的

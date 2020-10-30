@@ -22,6 +22,7 @@
 ## 说明
 #### BuildParam.java放置电子发票参数
 
+- buildTaxPrintParam() 构造发票打印数据
 - buildInsertWithArrayPostParam() 构造开票蓝票请求服务 表单数据
 - issue() 开票申请审核通过
 - red() 发票红冲请求服务及电子发票部分红冲
@@ -29,9 +30,9 @@
 - buildUrlConfigs()  url回掉配置
 - buildSmsConfigs()  构造短信发送信息
 - buildRequestDatas() 构造requestdatas
--  redRequestDatas()  构造redRequestdatas
+- redRequestDatas()  构造redRequestdatas
 - buildRequestDatasSplit()  构造蓝票请求服务--发票拆分数据
--  buildItems() 构造request发票明细
+- buildItems() 构造request发票明细
 - buildFpqqlsh() 获取发票请求流水号
 长度不超过20位，长度在1到20位的字母和数字组合，不可以重复的，
 不要包含window系统文件名限制的特殊字符
