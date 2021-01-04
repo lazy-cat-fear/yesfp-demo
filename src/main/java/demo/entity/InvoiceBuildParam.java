@@ -145,15 +145,15 @@ public class InvoiceBuildParam {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("FPQQLSH", buildFpqqlsh());
         //测试环境请一定要使用测试纳税人识别号
-        data.put("XSF_NSRSBH", "9144011476190205X4");//91110105MA0084MW37
+        data.put("XSF_NSRSBH", "201609140000001");//91110105MA0084MW37
         data.put("GMF_MC", "广州佰仕德材料科技有限公司");
         data.put("GMF_NSRSBH", "91440101MA5CR3FU35");
         data.put("GMF_DZDH", "广州市花都区红棉大道北16号4楼4B07室 020-61796191");
         data.put("GMF_YHZH", "中国农业银行股份有限公司广州花都名门支行 44087001040011474");
         data.put("FPLX", "4");
         //组织编码，测试环境请一定使用测试环境的组织编码
-//        data.put("ORGCODE", "20160914001");//91110105MA0084MW37
-        data.put("JSHJ", 1);
+        data.put("ORGCODE", "20160914001");//91110105MA0084MW37
+        data.put("JSHJ", 2);
         data.put("items", buildItems());
 
         datas.add(data);
@@ -243,7 +243,7 @@ public class InvoiceBuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "1001A11000000013MW7b";
+        return "1002A11000000013MW7a";
     }
 
 }

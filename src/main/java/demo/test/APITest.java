@@ -21,8 +21,10 @@ public class APITest {
     private static Logger LOGGER = LoggerFactory.getLogger(APITest.class);
 
     public static void main(String[] args) throws Exception {
+        //个人用户同步
+//        String result = syncUser();
         //发票打印
-        String result = taxPrint();
+//        String result = taxPrint();
         //删除
         //String result = invoiceApplyDel();
         //开票状态查询服务
@@ -36,7 +38,7 @@ public class APITest {
         //电子发票部分红冲
         //String result =partRed();
         //开票蓝票请求服务
-//        String result = insertWithArray();
+        String result = insertWithArray();
         //开票蓝票请求服务--发票拆分
         //String result=insertWithSplit();
         //识别结果保存台账
@@ -75,6 +77,11 @@ public class APITest {
         //String result =V2Uploadpdf();
         System.out.println(result);
 
+    }
+
+    public static String syncUser() throws Exception {
+        Object paramMap = ReimburseCollection.syncUser();
+        return HttpClientUtil.jsonPost(URLConfigEnum.SYNC_USER.getUrl(), paramMap);
     }
 
     public static String taxPrint() throws Exception{

@@ -1,5 +1,6 @@
 package demo.entity;
 
+import com.alibaba.fastjson.JSON;
 import demo.utils.Base64Util;
 
 import java.util.ArrayList;
@@ -8,7 +9,28 @@ import java.util.List;
 import java.util.Map;
 
 public class ReimburseCollection {
-    //发票上传
+
+    //个人用户同步
+    public static Object syncUser() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        List<Object> paramsList = new ArrayList<Object>();
+        Map<String, Object> user = new HashMap<String, Object>();
+        user.put("username","张三");
+        user.put("mobile","13888888888");
+        user.put("userMobile","userMobile");
+        user.put("email","aaa@a.com");
+        user.put("orgRelations","aaa@a.com");
+
+        Map<String, Object> orgRelations = new HashMap<String, Object>();
+        paramsList.add(user);
+        paramsMap.put("requestdatas", JSON.toJSONString(paramsList));
+        return paramsMap;
+    }
+
+    //用户组织关系同步
+//    public static Map<String, Object> syncUserOrgs() {
+//
+//    }
     //发票上传V2
     public static Map<String, Object> uploadpdf() {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
@@ -16,8 +38,8 @@ public class ReimburseCollection {
         paramsMap.put("usercode", "15011181852");
         paramsMap.put("useremail", "wangyer@yonyou.com");
         paramsMap.put("usermobile", "15011181852");
-        paramsMap.put("nsrsbh", "201609140000001");
-        paramsMap.put("orgcode", "20160914001");
+        paramsMap.put("nsrsbh", "915000006664268767");
+        paramsMap.put("orgcode", "915000006664268767");
         paramsMap.put("pdfFiles", pdfFiles());
         return paramsMap;
     }
@@ -28,9 +50,9 @@ public class ReimburseCollection {
         //选填
       // data.put("srcBillType","taxi");
      //   data.put("srcBillCode","23456789");
-        data.put("fileName","通讯2.pdf");
-        data.put("content", Base64Util.imageToBase64("C:/Users/Administrator/Desktop/通讯2.pdf"));
-        data.put("classification","通讯");
+        data.put("fileName","机票-电子.pdf");
+        data.put("content", Base64Util.imageToBase64("C:\\Users\\11055\\Desktop\\机票-电子1(1).pdf"));
+        data.put("classification","交通");
         files.add(data);
         return files;
     }

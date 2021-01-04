@@ -11,6 +11,8 @@ public enum URLConfigEnum {
 
     //如果需要测试其他接口 直接在这里添加枚举即可
 
+    //用户同步
+    SYNC_USER("/piaoeda-web/api/einvoice/v2/sync-user?appid="),
     //发票打印
     TAX_PRINT("/output-tax/api/invoice-his/print?appid="),
     //开票申请删除
@@ -67,19 +69,19 @@ public enum URLConfigEnum {
     V2_UPLOADPDF("/input-tax/api/reimburseCollection/v2/uploadpdf?appid="),
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
    KEY_PATH("src/main/resources/certificate/pro22.pfx"),
-    //  KEY_PATH("证书"),
+//      KEY_PATH("src/main/resources/certificate/.pfx"),
     //证书密码
    PASSWORD("password");
-    //    PASSWORD("密码");
+//        PASSWORD("");
 
 
     //测试环境有测试appid和证书，正式环境有正式appid和证书，请务必对应使用
     //测试环境appid就用这个，正式环境需要替换成正式的
-    //  private static String APPID = "";
+//      private static String APPID = "75ad6d";
     private static String APPID = "commontesterCA";
 
     //这个是测试环境的域名，正式环境为https://fapiao.yonyoucloud.com
-    //   private static String DOMAIN = "https://fapiao.yonyoucloud.com";
+//       private static String DOMAIN = "https://fapiao.yonyoucloud.com";
    private static String DOMAIN = "https://yesfp.yonyoucloud.com";
 
     private String value;
