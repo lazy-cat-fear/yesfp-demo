@@ -10,7 +10,8 @@ package demo.utils;
 public enum URLConfigEnum {
 
     //如果需要测试其他接口 直接在这里添加枚举即可
-
+    //发票作废
+    INVALID("/invoiceclient-web/api/invoiceApply/invalid?appid="),
     //用户同步
     SYNC_USER("/piaoeda-web/api/einvoice/v2/sync-user?appid="),
     //发票打印

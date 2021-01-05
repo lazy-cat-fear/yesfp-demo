@@ -14,6 +14,15 @@ import java.util.*;
 public class InvoiceBuildParam {
 
     /**
+     * 构造 发票作废 表单数据
+     */
+    public static Map<String, Object> buildInvalidParam() {
+        Map<String, Object> paramsMap = new HashMap<String, Object>();
+        paramsMap.put("requestdatas", buildInvalidRequestdatas());
+        return paramsMap;
+    }
+
+    /**
      * 构造 发票打印 表单数据
      */
     public static Map<String, Object> buildTaxPrintParam() {
@@ -244,6 +253,18 @@ public class InvoiceBuildParam {
      */
     private static String buildFpqqlsh() {
         return "1002A11000000013MW7a";
+    }
+
+
+    /**
+     * 发票作废Requestdatas参数
+     */
+    private static String buildInvalidRequestdatas() {
+        Map<String, Object> data = new HashMap<String, Object>();
+        data.put("fpHm", "200004275230");
+        data.put("fpDm", "23770399");
+        GsonBuilder builder = new GsonBuilder();
+        return builder.create().toJson(data);
     }
 
 }

@@ -21,6 +21,9 @@ public class APITest {
     private static Logger LOGGER = LoggerFactory.getLogger(APITest.class);
 
     public static void main(String[] args) throws Exception {
+        String result;
+        //发票作废
+        result = invalid();
         //个人用户同步
 //        String result = syncUser();
         //发票打印
@@ -30,7 +33,7 @@ public class APITest {
         //开票状态查询服务
         //String result = queryInvoiceStatus();
         //OCR识别接口
-        //String result = recognise();
+//        result = recognise();
         //开票申请审核通过
         //String result = issue();
         //发票红冲请求服务
@@ -38,7 +41,7 @@ public class APITest {
         //电子发票部分红冲
         //String result =partRed();
         //开票蓝票请求服务
-        String result = insertWithArray();
+//        result = insertWithArray();
         //开票蓝票请求服务--发票拆分
         //String result=insertWithSplit();
         //识别结果保存台账
@@ -79,11 +82,20 @@ public class APITest {
 
     }
 
+    //发票作废
+    public static String invalid() throws Exception {
+        Map<String, Object> paramMap = InvoiceBuildParam.buildInvalidParam();
+        System.out.println(paramMap);
+        return HttpClientUtil.post(URLConfigEnum.INVALID.getUrl(), paramMap);
+    }
+
+    //个人用户同步
     public static String syncUser() throws Exception {
         Object paramMap = ReimburseCollection.syncUser();
         return HttpClientUtil.jsonPost(URLConfigEnum.SYNC_USER.getUrl(), paramMap);
     }
 
+    //发票打印
     public static String taxPrint() throws Exception{
         Map<String, Object> paramsMap = InvoiceBuildParam.buildTaxPrintParam();
         return HttpClientUtil.jsonPost(URLConfigEnum.TAX_PRINT.getUrl(), paramsMap);
