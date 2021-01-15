@@ -162,7 +162,7 @@ public class InvoiceBuildParam {
         data.put("FPLX", "4");
         //组织编码，测试环境请一定使用测试环境的组织编码
         data.put("ORGCODE", "20160914001");//91110105MA0084MW37
-        data.put("JSHJ", 2);
+        data.put("JSHJ", 4);
         data.put("items", buildItems());
 
         datas.add(data);
@@ -202,7 +202,7 @@ public class InvoiceBuildParam {
         data.put("XSF_DZDH", "江苏省 无锡市   中国江苏省无锡市江阴市滨江西路");
         data.put("GMF_MC", "接口测试组织-请勿修改");
         data.put("GMF_MC", "接口测试组织-请勿修改");
-        data.put("JSHJ", 2);
+        data.put("JSHJ", 4);
         data.put("items", buildItems());
        // data.put("items", buildItems1());
         datas.add(data);
@@ -216,7 +216,7 @@ public class InvoiceBuildParam {
         List<Object> items = new ArrayList<Object>();
         Map<String, Object> data1 = new HashMap<String, Object>();
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("XMJSHJ", 1);
+        data.put("XMJSHJ", -1);
         data.put("XMMC", "硅胶5299B");
         data.put("XMBM", "202020012");
         data.put("GGXH", "25kg/桶");
@@ -227,9 +227,12 @@ public class InvoiceBuildParam {
         data.put("SL", 0.13);
         //SPBM字段为商品税收分类编码，不同的商品会有不同的编码，不对应的话会影响报税，需要咨询下公司财务
         data.put("SPBM", "1070213070000000000");
+
+        data.put("FPHXZ","1");
+        data.put("HH","1");
         items.add(data);
 
-        data1.put("XMJSHJ", 1);
+        data1.put("XMJSHJ", 5);
         data1.put("XMMC", "硅胶5299B");
         data1.put("XMBM", "202020012");
         data1.put("GGXH", "25kg/桶");
@@ -240,6 +243,9 @@ public class InvoiceBuildParam {
         data1.put("SL", 0.13);
         //SPBM字段为商品税收分类编码，不同的商品会有不同的编码，不对应的话会影响报税，需要咨询下公司财务
         data1.put("SPBM", "1070213070000000000");
+        data1.put("FPHXZ","2");
+        data1.put("HH","2");
+        data1.put("ZKHHH","1");
         items.add(data1);
         return items;
     }
@@ -252,7 +258,7 @@ public class InvoiceBuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "1002A11000000013MW7a";
+        return "1002A21000000013MW7a";
     }
 
 

@@ -23,7 +23,7 @@ public class APITest {
     public static void main(String[] args) throws Exception {
         String result;
         //发票作废
-        result = invalid();
+//        result = invalid();
         //个人用户同步
 //        String result = syncUser();
         //发票打印
@@ -41,7 +41,7 @@ public class APITest {
         //电子发票部分红冲
         //String result =partRed();
         //开票蓝票请求服务
-//        result = insertWithArray();
+        result = insertWithArray();
         //开票蓝票请求服务--发票拆分
         //String result=insertWithSplit();
         //识别结果保存台账
