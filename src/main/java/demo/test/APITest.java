@@ -1,6 +1,7 @@
 package demo.test;
 
 import demo.entity.InvoiceBuildParam;
+import demo.entity.PurchaseParam;
 import demo.entity.ReimburseCollection;
 import demo.entity.StaBookBuildParam;
 import demo.utils.HttpClientUtil;
@@ -22,6 +23,8 @@ public class APITest {
 
     public static void main(String[] args) throws Exception {
         String result;
+        //采购台账查询接口（新）
+        result = purchaseQuery();
         //发票作废
 //        result = invalid();
         //个人用户同步
@@ -41,7 +44,7 @@ public class APITest {
         //电子发票部分红冲
         //String result =partRed();
         //开票蓝票请求服务
-        result = insertWithArray();
+//        result = insertWithArray();
         //开票蓝票请求服务--发票拆分
         //String result=insertWithSplit();
         //识别结果保存台账
@@ -49,7 +52,7 @@ public class APITest {
         //台账报销
         // String result =  reimbursed();
         //台账取消报销
-        //  String result=cancelReimbursed();
+        //  String result=cancelRei=mbursed();
         //台账记账
         // String result=account();
         //台账取消记账
@@ -57,7 +60,7 @@ public class APITest {
         //报销台账删除
         // String result=delete();
         //飞机票台账查询
-        // String result= air();
+//         result= air();
         //火车票台账查询
         //String result= train();
         //出租车台账查询
@@ -73,6 +76,8 @@ public class APITest {
         //发票取消报销
         // String result =CollUnreimbursed();
         //入账
+        //String result = accountStatus();
+        //报销台账查询接口（新）
         // String result =CollQuery();
         //取消入账
         //String result =CollCancelAccount();
@@ -81,6 +86,23 @@ public class APITest {
         System.out.println(result);
 
     }
+
+    //采购台账查询接口（新）
+    private static String purchaseQuery() throws Exception {
+        Map<String, Object> paramsMap = PurchaseParam.query();
+        return HttpClientUtil.jsonPost(URLConfigEnum.PURCHASE_QUERY.getUrl(), paramsMap);
+    }
+
+    //模拟回调服务
+    //要求 1、post请求   2、服务公网可访问  3、接收请求传过来的参数
+    /*
+    @PostMapping(value = "getTicketInfo")
+    public Object getTicketInfo(@RequestBody JSONObject v2) {
+        System.out.println(v2);
+        return v2;
+    }
+
+     */
 
     //发票作废
     public static String invalid() throws Exception {

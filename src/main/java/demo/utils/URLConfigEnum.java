@@ -10,6 +10,8 @@ package demo.utils;
 public enum URLConfigEnum {
 
     //如果需要测试其他接口 直接在这里添加枚举即可
+    //采购台账
+    PURCHASE_QUERY("/invoiceclient-web/api/purchase-collection/query?appid="),
     //发票作废
     INVALID("/invoiceclient-web/api/invoiceApply/invalid?appid="),
     //用户同步

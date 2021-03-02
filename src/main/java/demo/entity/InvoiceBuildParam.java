@@ -71,7 +71,7 @@ public class InvoiceBuildParam {
         //paramsMap.put("email", buildEmailConfigs());
         //paramsMap.put("sms", buildSmsConfigs());
         paramsMap.put("url", buildUrlConfigs());
-        paramsMap.put("autoAudit", "false");
+        paramsMap.put("autoAudit", "true");
         return paramsMap;
     }
     /**
@@ -114,7 +114,7 @@ public class InvoiceBuildParam {
         List<Object> datas = new ArrayList<Object>();
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("fpqqlsh", buildFpqqlsh());
-        data.put("url", "http://117.12.12.3:7787/EinvoiceRESTService/CallBackEInvoices/");
+        data.put("url", "http://tiansutest.utools.club/api/AjaxDebug/invoiceCallback");
         datas.add(data);
         GsonBuilder builder = new GsonBuilder();
         return builder.create().toJson(datas);
@@ -258,7 +258,7 @@ public class InvoiceBuildParam {
      * @return 发票请求流水号
      */
     private static String buildFpqqlsh() {
-        return "1002A21000000013MW7a";
+        return "1002A23000000013MW7a";
     }
 
 
