@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * @author wrk
  * @time 2021-05-13 15:22
- * 采购台账API测试入口类
+ * 进程售票下的 采购台账API测试入口类
  */
 public class PurchaseLedgerTest {
     public static void main(String[] args) throws Exception {
