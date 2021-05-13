@@ -1,4 +1,4 @@
-package demo.entity;
+package demo.entity.personal_ticket_holder;
 
 import com.alibaba.fastjson.JSON;
 import demo.utils.Base64Util;

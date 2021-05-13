@@ -1,9 +1,7 @@
-package demo.entity;
+package demo.entity.input_ticket;
 
 import demo.utils.Base64Util;
-import org.omg.CORBA.OBJ_ADAPTER;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

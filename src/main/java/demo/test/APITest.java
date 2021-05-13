@@ -1,9 +1,9 @@
 package demo.test;
 
 import demo.entity.output_invoice.InvoiceBuildParam;
-import demo.entity.PurchaseParam;
-import demo.entity.ReimburseCollection;
-import demo.entity.StaBookBuildParam;
+import demo.entity.input_ticket.PurchaseParam;
+import demo.entity.personal_ticket_holder.ReimburseCollection;
+import demo.entity.input_ticket.StaBookBuildParam;
 import demo.utils.HttpClientUtil;
 import demo.utils.URLConfigEnum;
 import org.slf4j.Logger;

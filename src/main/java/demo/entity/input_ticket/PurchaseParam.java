@@ -1,4 +1,4 @@
-package demo.entity;
+package demo.entity.input_ticket;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class PurchaseParam {
         paramsMap.put("submitter", "提交人");
         paramsMap.put("reimburse_user", "报销人");
         paramsMap.put("submitDate_begin", "");
-        paramsMap.put("submitDate_end", "提交时期-起始");
+        paramsMap.put("submitDate_end", "提交时期aaaaa-起始");
         paramsMap.put("kprq_begin", "开票日期-起始");
         paramsMap.put("kprq_end", "开票日期-结束");
         paramsMap.put("fplx", "发票类型");
