@@ -9,7 +9,23 @@ package demo.utils;
  */
 public enum URLConfigEnum {
 
+    //开票
+
+
+
+    //受票
+
+
+
+    //个人票夹
+
     //如果需要测试其他接口 直接在这里添加枚举即可
+    //获取专票
+    QUERY_INVOICE("/invoiceclient-web/api/vat/queryInvoice?appid="),
+    //请求二维码信息
+    INSERT_FOR_QR_INVOICE("/invoiceclient-web/api/invoiceApply/insertForQRInvoice?appid="),
+    //专票红冲状态查询接口
+    RED_STATE_TOTAL("/output-tax/api/invoiceApply/red/state/total?appid="),
     //采购台账
     PURCHASE_QUERY("/invoiceclient-web/api/purchase-collection/query?appid="),
     //发票作废
@@ -72,18 +88,20 @@ public enum URLConfigEnum {
     V2_UPLOADPDF("/input-tax/api/reimburseCollection/v2/uploadpdf?appid="),
     //pro22.pfx为测试环境通讯证书，正式环境需要替换成正式的
    KEY_PATH("src/main/resources/certificate/pro22.pfx"),
-//      KEY_PATH("src/main/resources/certificate/.pfx"),
+//      KEY_PATH("src/main/resources/certificate/证书.pfx"),
     //证书密码
    PASSWORD("password");
-//        PASSWORD("");
+//        PASSWORD(
+//        "");
 
 
     //测试环境有测试appid和证书，正式环境有正式appid和证书，请务必对应使用
     //测试环境appid就用这个，正式环境需要替换成正式的
-//      private static String APPID = "75ad6d";
+//      private static String APPID = "";
     private static String APPID = "commontesterCA";
 
     //这个是测试环境的域名，正式环境为https://fapiao.yonyoucloud.com
+//    private static String DOMAIN = "https://tax.diwork.com"; //yonsuite yonbip 环境域名
 //       private static String DOMAIN = "https://fapiao.yonyoucloud.com";
    private static String DOMAIN = "https://yesfp.yonyoucloud.com";
 

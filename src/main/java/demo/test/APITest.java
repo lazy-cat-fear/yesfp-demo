@@ -1,6 +1,6 @@
 package demo.test;
 
-import demo.entity.InvoiceBuildParam;
+import demo.entity.output_invoice.InvoiceBuildParam;
 import demo.entity.PurchaseParam;
 import demo.entity.ReimburseCollection;
 import demo.entity.StaBookBuildParam;
@@ -19,12 +19,19 @@ import java.util.Map;
  */
 public class APITest {
 
+
     private static Logger LOGGER = LoggerFactory.getLogger(APITest.class);
 
     public static void main(String[] args) throws Exception {
-        String result;
+        String result = "";
+        //获取专票
+//        result = queryInvoice();
+        //请求二维码信息
+//        result =insertForQRInvoice();
+        //专票红冲状态查询接口
+//        result = redStateTotal();
         //采购台账查询接口（新）
-        result = purchaseQuery();
+//        result = purchaseQuery();
         //发票作废
 //        result = invalid();
         //个人用户同步
@@ -34,7 +41,7 @@ public class APITest {
         //删除
         //String result = invoiceApplyDel();
         //开票状态查询服务
-        //String result = queryInvoiceStatus();
+//        result = queryInvoiceStatus();
         //OCR识别接口
 //        result = recognise();
         //开票申请审核通过
@@ -44,11 +51,11 @@ public class APITest {
         //电子发票部分红冲
         //String result =partRed();
         //开票蓝票请求服务
-//        result = insertWithArray();
+        result = insertWithArray();
         //开票蓝票请求服务--发票拆分
-        //String result=insertWithSplit();
+//        result=insertWithSplit();
         //识别结果保存台账
-        // String result = OCR_Save();
+//         String result = OCR_Save();
         //台账报销
         // String result =  reimbursed();
         //台账取消报销
@@ -85,6 +92,23 @@ public class APITest {
         //String result =V2Uploadpdf();
         System.out.println(result);
 
+    }
+    //获取专票
+    private static String queryInvoice() throws Exception {
+        Map<String, Object> paramsMap = InvoiceBuildParam.buildQueryInvoiceParam();
+        return HttpClientUtil.jsonPost(URLConfigEnum.QUERY_INVOICE.getUrl(), paramsMap);
+    }
+
+    //请求二维码信息
+ /*   private static String insertForQRInvoice() throws Exception {
+        Map<String, Object> paramsMap = InvoiceBuildParam.insertForQRInvoice();
+        return HttpClientUtil.get(URLConfigEnum.INSERT_FOR_QR_INVOICE.getUrl(), paramsMap);
+    }
+*/
+    //专票红冲状态查询接口
+    private static String redStateTotal() throws Exception {
+        Map<String, Object> paramsMap = InvoiceBuildParam.buildRedStateTotalParam();
+        return HttpClientUtil.get(URLConfigEnum.RED_STATE_TOTAL.getUrl(), paramsMap);
     }
 
     //采购台账查询接口（新）

@@ -78,9 +78,18 @@ public class HttpClientUtil {
                 }
             }
             HttpGet httpGet = new HttpGet(url);
+            LOGGER.info("请求地址："+url);
+            LOGGER.info("请求参数："+JSON.toJSONString(params).replace("\\",""));
+
+            if (params instanceof Map) {
+                httpGet.addHeader("sign", SignHelper.sign((Map)params));
+                httpGet.addHeader("Content-Type", "application/json");
+            }
             HttpResponse httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
-            return EntityUtils.toString(httpEntity, "UTF-8");
+            String result = EntityUtils.toString(httpEntity, "UTF-8");
+            LOGGER.info("返回结果："+result.replace("\\",""));
+            return result;
         } catch (Exception e) {
             throw new Exception(e.getMessage(), e);
         } finally {
